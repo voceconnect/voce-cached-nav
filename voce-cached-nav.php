@@ -1,4 +1,12 @@
 <?php
+/*
+  Plugin Name: Voce Cached Nav
+  Plugin URI: http://voceconnect.com
+  Description: Serve cached WordPress Navigation Objects.
+  Version: 1.0
+  Author: Mark Parolisi
+  License: GPL2
+*/
 
 /**
  * Caching class for wp_nav_menu.
@@ -11,7 +19,12 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		const MENUPREFIX = 'wp_nav_menu-';
 		const ITEMSPREFIX = 'wp_nav_items-';
 		const MENUIDS = 'wp_nav_menus';
-
+		
+		/**
+		 * Set the action hooks to update the cache
+		 * @method init
+		 * @constructor
+		 */
 		public static function init() {
 			add_action( 'wp_create_nav_menu', array( __CLASS__, 'action_wp_update_nav_menu' ), 100 );
 			add_action( 'wp_update_nav_menu', array( __CLASS__, 'action_wp_update_nav_menu' ) );
@@ -21,7 +34,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method action_wp_update_nav_menu
-		 * @param type $menu_id 
+		 * @param Integer $menu_id 
 		 */
 		public static function action_wp_update_nav_menu( $menu_id ) {
 			self::delete_menu_objects_cache( $menu_id );
@@ -29,7 +42,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method action_wp_delete_nav_menu
-		 * @param type $menu_id 
+		 * @param Integer $menu_id 
 		 */
 		public static function action_wp_delete_nav_menu( $menu_id ) {
 			self::update_menu_ids_cache( $menu_id );
@@ -37,17 +50,17 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		}
 
 		/**
+		 * Clear the menu caches because the post title/permalink/etc could change.
 		 * @method action_save_post
-		 * @param type $post 
 		 */
-		public static function action_save_post( $post ) {
+		public static function action_save_post( ) {
 			// Passing 0 will ensure that all caches are deleted.
 			self::delete_menu_objects_cache( 0 );
 		}
 
 		/**
 		 * @method delete_menu_objects_cache
-		 * @param type $menu_id
+		 * @param Integer $menu_id
 		 * @return type 
 		 */
 		public static function delete_menu_objects_cache( $menu_id ) {
@@ -66,7 +79,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method update_menu_ids_cache
-		 * @param type $menu_id 
+		 * @param Integer $menu_id 
 		 */
 		public static function update_menu_ids_cache( $menu_id ) {
 			$cache = get_transient( self::MENUIDS );
@@ -83,7 +96,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 					}
 				}
 				$data = $cache;
-				// If this is executing for the first time    
+				// If this is executing for the first time
 			} else {
 				if ( term_exists( $menu_id, 'nav_menu' ) ) {
 					$data = array( $menu_id );
@@ -94,8 +107,8 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method parse_args
-		 * @param type $args
-		 * @return type 
+		 * @param Array $args
+		 * @return Object Filtered args 
 		 */
 		public static function parse_args( $args ) {
 			$defaults = array( 'menu' => '', 'container' => 'div', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu', 'menu_id' => '',
@@ -109,7 +122,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method get_nav_menu_object
-		 * @param type $args
+		 * @param Object $args
 		 * @return type 
 		 */
 		public static function get_nav_menu_object( $args ) {
@@ -131,7 +144,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		/**
 		 * @method get_nav_menu_items
-		 * @param type $term_id
+		 * @param Integer $term_id
 		 * @return type 
 		 */
 		public static function get_nav_menu_items( $term_id ) {
@@ -147,7 +160,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		/**
 		 * @method menu
 		 * @staticvar array $menu_id_slugs
-		 * @param type $args
+		 * @param {Array} $args
 		 * @return boolean 
 		 */
 		public static function menu( $args = array( ) ) {
@@ -246,7 +259,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 	/**
 	 * Just a template tag
 	 * @method wp_cached_nav_menu
-	 * @param array $args 
+	 * @param Array $args 
 	 */
 	function wp_cached_nav_menu( $args ) {
 		Voce_Cached_Nav::menu( $args );
