@@ -21,6 +21,10 @@ Replace your template calls to `wp_nav_menu` with `wp_cached_nav_menu` to retrei
 
 == Frequently Asked Questions ==
 
+= Can I pass the same arguments to wp_cached_nav_menu? =
+
+Yes. The caching class is essentially just a refactor of that large core function with caching at all possible levels.
+
 == Screenshots ==
 
 == Changelog ==
