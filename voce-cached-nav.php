@@ -12,13 +12,12 @@
  * Caching class for wp_nav_menu.
  * @class Voce_Cached_Nav
  */
-if ( !class_exists( 'Voce_Cached_Nav' ) ) {
-
+if ( ! class_exists( 'Voce_Cached_Nav' ) ) {
 	class Voce_Cached_Nav {
 
-		const MENUPREFIX = 'wp_nav_menu-';
+		const MENUPREFIX  = 'wp_nav_menu-';
 		const ITEMSPREFIX = 'wp_nav_items-';
-		const MENUIDS = 'wp_nav_menus';
+		const MENUIDS     = 'wp_nav_menus';
 		
 		/**
 		 * Set the action hooks to update the cache
@@ -64,13 +63,14 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		 * @return type 
 		 */
 		public static function delete_menu_objects_cache( $menu_id ) {
-			//if given an existing menu_id delete just that menu
 			if ( term_exists( $menu_id, 'nav_menu' ) ) {
+				//if given an existing menu_id delete just that menu
 				return delete_transient( self::ITEMSPREFIX . $menu_id );
-			} else { //delete all cached menus recursively
+			} else { 
+				//delete all cached menus recursively
 				$all_cached_menus = get_transient( self::MENUIDS );
 				if ( is_array( $all_cached_menus ) ) {
-					foreach ($all_cached_menus as $menu_id) {
+					foreach ( $all_cached_menus as $menu_id ) {
 						self::delete_menu_objects_cache( $menu_id );
 					}
 				}
@@ -89,7 +89,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 				if ( !in_array( $menu_id, $cache ) && term_exists( $menu_id, 'nav_menu' ) ) {
 					$cache = array_merge( $cache, array( $menu_id ) );
 				}
-				foreach ($cache as $key => $cached_id) {
+				foreach ( $cache as $key => $cached_id ) {
 					// Remove the menu ID if it's invalid
 					if ( !term_exists( $cached_id, 'nav_menu' ) ) {
 						unset( $cache[$key] );
@@ -111,9 +111,24 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		 * @return Object Filtered args 
 		 */
 		public static function parse_args( $args ) {
-			$defaults = array( 'menu' => '', 'container' => 'div', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu', 'menu_id' => '',
-				'echo' => true, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-				'depth' => 0, 'walker' => '', 'theme_location' => '' );
+			$defaults = array( 
+				'menu' => '', 
+				'container' => 'div', 
+				'container_class' => '', 
+				'container_id' => '', 
+				'menu_class' => 'menu', 
+				'menu_id' => '',
+				'echo' => true, 
+				'fallback_cb' => 'wp_page_menu', 
+				'before' => '', 
+				'after' => '', 
+				'link_before' => '', 
+				'link_after' => '', 
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'depth' => 0, 
+				'walker' => '', 
+				'theme_location' => '',
+			);
 
 			$args = wp_parse_args( $args, $defaults );
 			$args = apply_filters( 'wp_nav_menu_args', $args );
@@ -166,7 +181,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		 * @param {Array} $args
 		 * @return boolean 
 		 */
-		public static function menu( $args = array( ) ) {
+		public static function menu( $args = array() ) {
 
 			$args = self::parse_args( $args );
 
@@ -189,15 +204,15 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 				return false;
 			}
 
-			static $menu_id_slugs = array( );
+			static $menu_id_slugs = array();
 
 			$nav_menu = $items = '';
 
 			// Set up the $menu_item variables
 			_wp_menu_item_classes_by_context( $menu_items );
 
-			$sorted_menu_items = array( );
-			foreach ((array) $menu_items as $key => $menu_item) {
+			$sorted_menu_items = array();
+			foreach ( (array) $menu_items as $key => $menu_item ) {
 				$sorted_menu_items[$menu_item->menu_order] = $menu_item;
 			}
 			unset( $menu_items );
@@ -267,5 +282,4 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 	function wp_cached_nav_menu( $args ) {
 		Voce_Cached_Nav::menu( $args );
 	}
-
 }
