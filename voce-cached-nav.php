@@ -128,7 +128,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		public static function get_nav_menu_object( $args ) {
 			if ( empty( $args->menu ) ) {
 				$locations = get_nav_menu_locations();
-				if ( empty( $locations ) ) {
+				if ( empty( $locations ) || !isset($locations[$args->theme_location])) {
 					return false;
 				}
 				$menu_lookup = $locations[$args->theme_location];
