@@ -264,7 +264,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 	 * @method wp_cached_nav_menu
 	 * @param Array $args 
 	 */
-	function wp_cached_nav_menu( $args ) {
+	function voce_cached_nav( $args ) {
 		Voce_Cached_Nav::menu( $args );
 	}
 
