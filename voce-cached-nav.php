@@ -259,12 +259,13 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 	Voce_Cached_Nav::init();
 
-	/**
-	 * Just a template tag
-	 * @method wp_cached_nav_menu
-	 * @param Array $args 
-	 */
-	function voce_cached_nav( $args ) {
+	if ( ! function_exists( 'wp_cached_nav_menu' ) ) {
+		function wp_cached_nav_menu( $args ) {
+			voce_cached_nav_menu( $args );
+		}
+	}
+
+	function voce_cached_nav_menu( $args ) {
 		Voce_Cached_Nav::menu( $args );
 	}
 

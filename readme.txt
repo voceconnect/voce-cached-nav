@@ -11,17 +11,17 @@ Serve cached copies of WordPress navigation menus
 
 == Description ==
 
-Replace your template calls to `wp_nav_menu` with `wp_cached_nav_menu` to retreive cached copies of menu objects.
+Replace your template calls to `wp_nav_menu` with `voce_cached_nav_menu` to retreive cached copies of menu objects.
 
 == Installation ==
 
 1. Upload `voce-cached-nav` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Replace calls to `wp_nav_menu` with `wp_cached_nav_menu` in your templates
+1. Replace calls to `wp_nav_menu` with `voce_cached_nav_menu` in your templates
 
 == Frequently Asked Questions ==
 
-= Can I pass the same arguments to wp_cached_nav_menu? =
+= Can I pass the same arguments to voce_cached_nav_menu? =
 
 Yes. The caching class is essentially just a refactor of that large core function with caching at all possible levels.
 
