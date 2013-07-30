@@ -25,7 +25,7 @@ Serve cached copies of WordPress navigation menus by replacing your template cal
 	}
 
 ## Usage
-replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
+Replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
 
 ## Frequently Asked Questions
 
