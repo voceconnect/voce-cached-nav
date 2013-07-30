@@ -1,8 +1,8 @@
-=== Plugin Name ===
+=== Voce Cached Nav ===
 Contributors: markparolisi, voceplatforms
-Tags: nav menus
+Tags: nav, menus, cache, caching, performance
 Requires at least: 3.3
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,8 +16,8 @@ Replace your template calls to `wp_nav_menu` with `voce_cached_nav_menu` to retr
 == Installation ==
 
 1. Upload `voce-cached-nav` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Replace calls to `wp_nav_menu` with `voce_cached_nav_menu` in your templates
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Replace calls to `wp_nav_menu` with `voce_cached_nav_menu` in your templates
 
 == Frequently Asked Questions ==
 
