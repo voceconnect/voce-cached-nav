@@ -20,9 +20,11 @@ Serve cached copies of WordPress navigation menus by replacing your template cal
 ### As theme or plugin dependency:
 > After dropping the plugin into the containing theme or plugin, add the following:
 
-	if( ! class_exists( 'Voce_Cached_Nav' ) ) {
-		require_once( $path_to_voce_cached_nav . '/voce-cached-nav.php' );
-	}
+```php
+if( ! class_exists( 'Voce_Cached_Nav' ) ) {
+	require_once( $path_to_voce_cached_nav . '/voce-cached-nav.php' );
+}
+```
 
 ## Usage
 Replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
