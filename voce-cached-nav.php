@@ -266,7 +266,8 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 	}
 
 	function voce_cached_nav_menu( $args ) {
-		Voce_Cached_Nav::menu( $args );
+		return Voce_Cached_Nav::menu( $args );
+        
 	}
 
 }
