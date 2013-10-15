@@ -73,7 +73,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		 */
 		public static function delete_menu_objects_cache( $menu_id ) {
 			//if given an existing menu_id delete just that menu
-			if ( term_exists( $menu_id, 'nav_menu' ) ) {
+			if ( term_exists( (int)$menu_id, 'nav_menu' ) ) {
 				return delete_transient( self::ITEMSPREFIX . $menu_id );
 			} else { //delete all cached menus recursively
 				$all_cached_menus = get_transient( self::MENUIDS );
@@ -94,19 +94,19 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 			// If there is already a cached array
 			if ( is_array( $cache ) ) {
 				// If the menu ID is not already in cache and is a valid menu
-				if ( !in_array( $menu_id, $cache ) && term_exists( $menu_id, 'nav_menu' ) ) {
+				if ( !in_array( $menu_id, $cache ) && term_exists( (int)$menu_id, 'nav_menu' ) ) {
 					$cache = array_merge( $cache, array( $menu_id ) );
 				}
 				foreach ($cache as $key => $cached_id) {
 					// Remove the menu ID if it's invalid
-					if ( !term_exists( $cached_id, 'nav_menu' ) ) {
+					if ( !term_exists( (int)$cached_id, 'nav_menu' ) ) {
 						unset( $cache[$key] );
 					}
 				}
 				$data = $cache;
 				// If this is executing for the first time
 			} else {
-				if ( term_exists( $menu_id, 'nav_menu' ) ) {
+				if ( term_exists( (int)$menu_id, 'nav_menu' ) ) {
 					$data = array( $menu_id );
 				}
 			}
