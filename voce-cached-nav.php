@@ -61,13 +61,11 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 		public static function get_nav_menus() {
 			$menus = get_transient( self::MENUIDS );
-			//get wp_nav_menus just only one time
-			if ( !is_array( $cache ) ) {
+			if ( !is_array( $menus ) ) {
 				$menus = wp_get_nav_menus();
 				foreach ( $menus as $menu ) {
 					self::update_menu_ids_cache( $menu->term_id );
 				}
-				$cache = self::MENUIDS;
 			}
 			return $menus;
 		}
