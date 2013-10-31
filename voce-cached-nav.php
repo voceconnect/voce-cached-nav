@@ -19,7 +19,6 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		const MENUPREFIX = 'wp_nav_menu-';
 		const ITEMSPREFIX = 'wp_nav_items-';
 		const MENUIDS = 'wp_nav_menus';
-		const WP_GET_NAV_MENUS = 'wp_get_nav_menus';
 
 		/**
 		 * Set the action hooks to update the cache
@@ -61,13 +60,12 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 		}
 
 		public static function get_nav_menus() {
-			$menus = get_transient( self::WP_GET_NAV_MENUS );
+			$menus = get_transient( self::MENUIDS );
 			if ( !is_array( $menus ) ) {
 				$menus = wp_get_nav_menus();
 				foreach ( $menus as $menu ) {
 					self::update_menu_ids_cache( $menu->term_id );
 				}
-				set_transient( self::WP_GET_NAV_MENUS, $menus);
 			}
 			return $menus;
 		}
