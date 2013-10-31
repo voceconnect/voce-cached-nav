@@ -1,36 +1,40 @@
-=== Voce Cached Nav ===
-Contributors: markparolisi, voceplatforms, nattyait
-Tags: nav, menus, cache, caching, performance
-Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 1.1
-License: GPLv2 or later
+Voce Cached Nav
+==================
+
+Contributors: markparolisi, voceplatforms  
+Tags: nav, menus, cache, caching, performance  
+Requires at least: 3.3  
+Tested up to: 3.5  
+Stable tag: 1.0  
+License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Serve cached copies of WordPress navigation menus
+## Description
+Serve cached copies of WordPress navigation menus by replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`.
 
-== Description ==
+## Installation
 
-Replace your template calls to `wp_nav_menu` with `voce_cached_nav_menu` to retreive cached copies of menu objects.
+### As standard plugin:
+> See [Installing Plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
 
-== Installation ==
+### As theme or plugin dependency:
+> After dropping the plugin into the containing theme or plugin, add the following:
 
-1. Upload `voce-cached-nav` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Replace calls to `wp_nav_menu` with `voce_cached_nav_menu` in your templates
+```php
+if( ! class_exists( 'Voce_Cached_Nav' ) ) {
+	require_once( $path_to_voce_cached_nav . '/voce-cached-nav.php' );
+}
+```
 
-== Frequently Asked Questions ==
+## Usage
+Replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
 
-= Can I pass the same arguments to voce_cached_nav_menu? =
+## Frequently Asked Questions
 
-Yes. The caching class is essentially just a refactor of that large core function with caching at all possible levels.
+* **Can I pass the same arguments to voce_cached_nav_menu?**
+	* *Yes. The caching class is essentially just a refactor of that large core function with caching at all possible levels.*
 
-== Screenshots ==
+# Changelog
 
-== Changelog ==
-
-= 1.1 =
-* 3.6 compatibility
-
-= 1.0 =
-* Initial release.
+**1.0**  
+*Initial release.*
