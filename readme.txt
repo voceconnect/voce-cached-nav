@@ -1,9 +1,9 @@
 === Voce Cached Nav ===
-Contributors: markparolisi, voceplatforms
+Contributors: markparolisi, voceplatforms, nattyait
 Tags: nav, menus, cache, caching, performance
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 1.0
+Tested up to: 3.6
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Yes. The caching class is essentially just a refactor of that large core functio
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1 =
+* 3.6 compatibility
 
 = 1.0 =
 * Initial release.
