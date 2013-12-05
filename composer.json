@@ -1,0 +1,14 @@
+{
+    "name": "voceconnect/voce-cached-nav",
+    "description": "Serve cached copies of WordPress navigation menus by replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`.",
+    "license": "GPLv2+",
+    "authors": [
+        {
+            "name": "Mark Parolisi",
+            "email": "mark@voceconnect.com"
+        }
+    ],
+    "autoload": {
+        "files": ["voce-cached-nav.php"]
+    }
+}
