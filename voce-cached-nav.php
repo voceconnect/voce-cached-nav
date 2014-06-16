@@ -3,7 +3,7 @@
   Plugin Name: Voce Cached Nav
   Plugin URI: http://voceconnect.com
   Description: Serve cached WordPress Navigation Objects.
-  Version: 1.1
+  Version: 1.1.1
   Author: Mark Parolisi
   License: GPL2
 */
