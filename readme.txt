@@ -30,7 +30,6 @@ Yes. The caching class is essentially just a refactor of that large core functio
 == Changelog ==
 = 1.2 =
 * Adding Capistrano deploy files
-* Cleaning out build files
 
 = 1.1.2 =
 * Fix for declaration that defines if adding 'menu-item-has-children' class to parent items

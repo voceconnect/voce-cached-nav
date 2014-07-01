@@ -37,7 +37,6 @@ Replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
 # Changelog
 **1.2**  
 * Adding Capistrano deploy files
-* Cleaning out build files
 
 **1.1.2**  
 *Fix for declaration that defines if adding 'menu-item-has-children' class to parent items*
