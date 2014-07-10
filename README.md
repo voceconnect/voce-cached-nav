@@ -1,11 +1,11 @@
 Voce Cached Nav
 ==================
 
-Contributors: markparolisi, voceplatforms, nattyait  
+Contributors: markparolisi, voceplatforms, nattyait, kevinlangleyjr  
 Tags: nav, menus, cache, caching, performance  
 Requires at least: 3.3  
-Tested up to: 3.7.1  
-Stable tag: 1.2  
+Tested up to: 3.9.1  
+Stable tag: 1.3  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,9 @@ Replacing your template calls to `wp_nav_menu` with `voce_cached_nav_menu`
 	* *Yes. The caching class is essentially just a refactor of that large core function with caching at all possible levels.*
 
 # Changelog
+**1.3**  
+* Fixing undefined $data variable bug when deleting menus
+
 **1.2**  
 * Adding Capistrano deploy files
 

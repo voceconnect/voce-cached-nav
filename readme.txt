@@ -1,9 +1,9 @@
 === Voce Cached Nav ===
-Contributors: markparolisi, voceplatforms, nattyait
+Contributors: markparolisi, voceplatforms, nattyait, kevinlangleyjr
 Tags: nav, menus, cache, caching, performance
 Requires at least: 3.3
-Tested up to: 3.7.1
-Stable tag: 1.2
+Tested up to: 3.9.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Yes. The caching class is essentially just a refactor of that large core functio
 == Screenshots ==
 
 == Changelog ==
+= 1.3 =
+* Fixing undefined $data variable bug when deleting menus
+
 = 1.2 =
 * Adding Capistrano deploy files
 

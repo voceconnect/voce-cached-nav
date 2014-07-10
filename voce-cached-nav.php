@@ -3,7 +3,7 @@
   Plugin Name: Voce Cached Nav
   Plugin URI: http://voceconnect.com
   Description: Serve cached WordPress Navigation Objects.
-  Version: 1.2
+  Version: 1.3
   Author: Mark Parolisi
   License: GPL2
 */
@@ -111,11 +111,14 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 				$data = $cache;
 				// If this is executing for the first time
 			} else {
-				if ( term_exists( (int) $menu_id, 'nav_menu' ) ) {
-					$data = array( $menu_id );
-				}
+				$data = ( term_exists( (int) $menu_id, 'nav_menu' ) ) ? array( $menu_id ) : false;
 			}
-			set_transient( self::MENUIDS, $data );
+
+			if( $data ){
+				set_transient( self::MENUIDS, $data );
+			} else {
+				delete_transient( self::MENUIDS );
+			}
 		}
 
 		/**
@@ -251,7 +254,7 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 				if ( $menu_item->menu_item_parent )
 					$menu_items_with_children[ $menu_item->menu_item_parent ] = true;
 			}
-		
+
 			// Add the menu-item-has-children class where applicable
 			if ( !empty( $menu_items_with_children ) ) {
 				foreach ( $sorted_menu_items as &$menu_item ) {
