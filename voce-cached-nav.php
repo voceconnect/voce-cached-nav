@@ -30,6 +30,9 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 			add_action( 'wp_update_nav_menu', array( __CLASS__, 'action_wp_update_nav_menu' ) );
 			add_action( 'wp_delete_nav_menu', array( __CLASS__, 'action_wp_delete_nav_menu' ), 100 );
 			add_action( 'save_post', array( __CLASS__, 'action_save_post' ) );
+
+			// Handle term splitting
+			add_action( 'split_shared_term', array( _CLASS_, 'handle_term_splitting'), 10, 4 );
 		}
 
 		/**
@@ -300,6 +303,15 @@ if ( !class_exists( 'Voce_Cached_Nav' ) ) {
 
 			if ( $args->echo ) echo $nav_menu; else
 				return $nav_menu;
+		}
+
+		public static function handle_term_splitting( $old_term_id, $new_term_id, $term_taxonomy_id, $taxonomy ) {
+			$transient = get_transient( self::ITEMSPREFIX . $old_term_id );
+
+			if( false !== $transient) {
+				delete_transient( self::ITEMSPREFIX . $old_term_id );
+				set_transient( self::ITEMSPREFIX . $new_term_id , $transient );
+			}
 		}
 
 	}
